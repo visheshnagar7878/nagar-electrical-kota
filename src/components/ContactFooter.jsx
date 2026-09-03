@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, MessageSquare, MapPin, Clock, ShieldCheck, Wrench, ArrowUp, Navigation, Sparkles, CheckCircle2 } from 'lucide-react';
 
-export default function ContactFooter({ onOpenBooking }) {
+export default function ContactFooter({ onOpenBooking, setCurrentView }) {
   const localities = [
     'Talwandi', 'Dadabari', 'Mahaveer Nagar', 'Vigyan Nagar', 
     'Teen Bati Circle', 'Kunhari', 'Landmark City', 'Kota Junction', 
@@ -219,8 +219,8 @@ export default function ContactFooter({ onOpenBooking }) {
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', fontSize: '0.82rem', color: '#64748b' }}>
           <p>© {new Date().getFullYear()} Nagar Electrical Kota. All rights reserved.</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} className="footer-link">Privacy</span>
-            <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} className="footer-link">Terms</span>
+            <span onClick={() => { setCurrentView('privacy'); scrollToTop(); }} style={{ cursor: 'pointer', transition: 'color 0.2s' }} className="footer-link">Privacy</span>
+            <span onClick={() => { setCurrentView('terms'); scrollToTop(); }} style={{ cursor: 'pointer', transition: 'color 0.2s' }} className="footer-link">Terms</span>
             <button 
               onClick={scrollToTop}
               style={{ color: '#f59e0b', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.25rem', cursor: 'pointer', background: 'transparent' }}

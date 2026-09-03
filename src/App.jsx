@@ -9,9 +9,11 @@ import WorkGallery from './components/WorkGallery';
 import KotaServiceArea from './components/KotaServiceArea';
 import ContactFooter from './components/ContactFooter';
 import BookingModal from './components/BookingModal';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsConditions from './components/TermsConditions';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState('service'); // 'service' | 'shop' | 'all'
+  const [currentView, setCurrentView] = useState('service'); // 'service' | 'shop' | 'all' | 'privacy' | 'terms'
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [bookingService, setBookingService] = useState('Fan Repair & Service');
 
@@ -35,41 +37,49 @@ export default function App() {
 
       {/* Main Content Area */}
       <main style={{ flex: 1 }}>
-        {/* Hero Section */}
-        <Hero 
-          onOpenBooking={() => handleOpenBooking()}
-          currentView={currentView}
-          setCurrentView={setCurrentView}
-        />
+        {currentView === 'privacy' && <PrivacyPolicy />}
+        {currentView === 'terms' && <TermsConditions />}
 
-        {/* Doorstep Process (5-Step Circuit Timeline) */}
-        <DoorstepProcess 
-          onOpenBooking={() => handleOpenBooking()}
-        />
+        {currentView !== 'privacy' && currentView !== 'terms' && (
+          <>
+            {/* Hero Section */}
+            <Hero 
+              onOpenBooking={() => handleOpenBooking()}
+              currentView={currentView}
+              setCurrentView={setCurrentView}
+            />
 
-        {/* Doorstep Services Section (#1 Primary Focus) */}
-        <ServicesSection 
-          onSelectService={(srvName) => handleOpenBooking(srvName)}
-        />
+            {/* Doorstep Process (5-Step Circuit Timeline) */}
+            <DoorstepProcess 
+              onOpenBooking={() => handleOpenBooking()}
+            />
 
-        {/* Products Available at Shop (#2 Secondary Focus) */}
-        <ProductCatalog />
+            {/* Doorstep Services Section (#1 Primary Focus) */}
+            <ServicesSection 
+              onSelectService={(srvName) => handleOpenBooking(srvName)}
+            />
 
-        {/* Why Choose Nagar Electrical */}
-        <WhyUs />
+            {/* Products Available at Shop (#2 Secondary Focus) */}
+            <ProductCatalog />
 
-        {/* Kota Service Coverage & Dispatch Estimator */}
-        <KotaServiceArea 
-          onOpenBooking={() => handleOpenBooking()}
-        />
+            {/* Why Choose Nagar Electrical */}
+            <WhyUs />
 
-        {/* Real Work & Shop Gallery */}
-        <WorkGallery />
+            {/* Kota Service Coverage & Dispatch Estimator */}
+            <KotaServiceArea 
+              onOpenBooking={() => handleOpenBooking()}
+            />
+
+            {/* Real Work & Shop Gallery */}
+            <WorkGallery />
+          </>
+        )}
       </main>
 
       {/* Contact & Footer Section */}
       <ContactFooter 
         onOpenBooking={() => handleOpenBooking()}
+        setCurrentView={setCurrentView}
       />
 
       {/* Interactive Doorstep Booking Wizard Modal */}
