@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Fan, Wind, Coffee, Flame, Zap, Home, Wrench, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 import InteractiveApplianceSimulator from './InteractiveApplianceSimulator';
 
 export default function ServicesSection({ onSelectService }) {
+  useEffect(() => {
+    const scriptSrc = "https://pl31275079.profitableratecpmnetwork.com/ac/66/4c/ac664ca497f2e898f1501b1cf17a3a86.js";
+    if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
+      const script = document.createElement('script');
+      script.src = scriptSrc;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }, []);
   const servicesList = [
     {
       id: 'fan',

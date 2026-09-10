@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Wrench, Phone, ShieldCheck, MapPin, ArrowRight, CheckCircle2, Store } from 'lucide-react';
 
 export default function Hero({ onOpenBooking }) {
+  useEffect(() => {
+    const scriptSrc = "https://pl31275079.profitableratecpmnetwork.com/ac/66/4c/ac664ca497f2e898f1501b1cf17a3a86.js";
+    if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
+      const script = document.createElement('script');
+      script.src = scriptSrc;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }, []);
   return (
     <section id="home" style={{ position: 'relative', background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)', padding: 'clamp(2.5rem, 5vw, 5rem) 0 clamp(3rem, 6vw, 6rem)', overflow: 'hidden' }}>
       {/* Background Subtle Grid */}
