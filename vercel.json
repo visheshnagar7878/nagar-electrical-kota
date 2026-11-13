@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/gappu-muni", "destination": "/gappu-muni.html" },
+    { "source": "/game",        "destination": "/game.html" }
+  ]
+}
